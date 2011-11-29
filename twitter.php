@@ -3,7 +3,7 @@
 Plugin Name: Simple Twitter Widget
 Plugin URI: http://chipsandtv.com/
 Description: A simple but powerful widget to display updates from a Twitter feed. Configurable and reliable.
-Version: 1.03
+Version: 1.04
 Author: Matthias Siegel
 Author URI: http://chipsandtv.com/
 
@@ -115,7 +115,10 @@ if (!class_exists('Twitter_Widget')) :
 				    	$text = preg_replace('`\b(([\w-]+://?|www[.])[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/)))`', '<a href="$0">$0</a>', $text);
 
 				    	// Match @name
-				    	$text = preg_replace('/(@)([a-zA-Z0-9\_]+)/', '@<a href="http://twitter.com/$2">$2</a>', $text);
+				    	$text = preg_replace('/(@)([a-zA-Z0-9\_]+)/', '@<a href="https://twitter.com/$2">$2</a>', $text);
+							
+							// Match #hashtag
+							$text = preg_replace('/(#)([a-zA-Z0-9\_]+)/', '#<a href="https://twitter.com/search/?q=$2">$2</a>', $text);
 						endif;
 
 			    	// Display date/time
@@ -226,7 +229,7 @@ if (!class_exists('Twitter_Widget')) :
 			</p>
 
 			<p>
-				<label for="<?php echo $this->get_field_id('posts'); ?>">Display how many posts?</label>
+				<label for="<?php echo $this->get_field_id('posts'); ?>">Number of posts to display</label>
 				<input class="widefat" type="text" id="<?php echo $this->get_field_id('posts'); ?>" name="<?php echo $this->get_field_name('posts'); ?>" value="<?php echo $instance['posts']; ?>">
 			</p>
 
@@ -242,27 +245,27 @@ if (!class_exists('Twitter_Widget')) :
 								
 			<p>
 				<input class="checkbox" type="checkbox" <?php if ($instance['datedisplay']) echo 'checked="checked" '; ?>id="<?php echo $this->get_field_id('datedisplay'); ?>" name="<?php echo $this->get_field_name('datedisplay'); ?>">
-				<label for="<?php echo $this->get_field_id('datedisplay'); ?>">Display date?</label>
+				<label for="<?php echo $this->get_field_id('datedisplay'); ?>">Display date</label>
 				
 				<br>
 				
 				<input class="checkbox" type="checkbox" <?php if ($instance['datebreak']) echo 'checked="checked" '; ?>id="<?php echo $this->get_field_id('datebreak'); ?>" name="<?php echo $this->get_field_name('datebreak'); ?>">
-				<label for="<?php echo $this->get_field_id('datebreak'); ?>">Add linebreak after date?</label>
+				<label for="<?php echo $this->get_field_id('datebreak'); ?>">Add linebreak after date</label>
 				
 				<br>
 
 				<input class="checkbox" type="checkbox" <?php if ($instance['clickable']) echo 'checked="checked" '; ?>id="<?php echo $this->get_field_id('clickable'); ?>" name="<?php echo $this->get_field_name('clickable'); ?>">
-				<label for="<?php echo $this->get_field_id('clickable'); ?>">Make URLs &amp; usernames clickable?</label>
+				<label for="<?php echo $this->get_field_id('clickable'); ?>">Clickable URLs, names &amp; hashtags</label>
 				
 				<br>
 
 				<input class="checkbox" type="checkbox" <?php if ($instance['hideerrors']) echo 'checked="checked" '; ?>id="<?php echo $this->get_field_id('hideerrors'); ?>" name="<?php echo $this->get_field_name('hideerrors'); ?>">
-				<label for="<?php echo $this->get_field_id('hideerrors'); ?>">Hide error message if update fails?</label>
+				<label for="<?php echo $this->get_field_id('hideerrors'); ?>">Hide error message if update fails</label>
 
 				<br>
 
 				<input class="checkbox" type="checkbox" <?php if ($instance['encodespecial']) echo 'checked="checked" '; ?>id="<?php echo $this->get_field_id('encodespecial'); ?>" name="<?php echo $this->get_field_name('encodespecial'); ?>">
-				<label for="<?php echo $this->get_field_id('encodespecial'); ?>">HTML-encode special characters?</label>
+				<label for="<?php echo $this->get_field_id('encodespecial'); ?>">HTML-encode special characters</label>
 			</p>
 			
 <?php

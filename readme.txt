@@ -4,7 +4,7 @@ Donate link: http://chipsandtv.com/
 Tags: twitter, widget
 Requires at least: 2.8
 Tested up to: 3.2.1
-Stable tag: 1.03
+Stable tag: 1.04
 
 A simple but powerful widget to display updates from a Twitter feed. Configurable and reliable.
 
@@ -53,6 +53,9 @@ Also keep in mind it will only work with public Twitter feeds, not private ones.
 1. Widget options
 
 == Changelog ==
+
+= 1.04 =
+* Clickable hashtags (thanks Tyler Longren)
 
 = 1.03 =
 * Added new option to HTML-encode special characters like ampersands (requested)

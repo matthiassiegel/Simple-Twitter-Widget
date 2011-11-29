@@ -46,8 +46,12 @@ The code has been extensively tested and most issues can be resolved by trying t
 
 Also keep in mind it will only work with public Twitter feeds, not private ones.
 
+
 Changelog
 ---------
+
+### 1.04
+*   Clickable hashtags (thanks Tyler Longren)
 
 ### 1.03
 *   Added new option to HTML-encode special characters like ampersands (requested)
